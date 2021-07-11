@@ -1,0 +1,17 @@
+version: "3.9"
+services: 
+    go:
+        build: ./go
+        volumes:
+            - "./go:/go"
+            - "///var/run/docker.sock:/var/run/docker.sock"
+            - "./ui:/imageTest"
+        tty: true
+
+    ui:
+        build: ./ui
+        ports:
+                - "3000:3000"
+        volumes: 
+            - "./ui:/src"
+        tty: true
